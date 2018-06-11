@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ListComponent } from './users/list/list.component';
+import { UsersModule } from './users/users.module';
+import { FormComponent } from './users/form/form.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +15,14 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    UsersModule,
+  ],
+  entryComponents: [
+    ListComponent,
+    FormComponent
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]

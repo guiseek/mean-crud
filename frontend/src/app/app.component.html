@@ -1,37 +1,20 @@
-<div style="text-align:center">
-  <h1>
-    Users
-  </h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>
+        Usuários
+      </h1>
+      <h2 class="alert alert-info" *ngIf="alert">{{alert.message}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <h2>Formulário</h2>
+      <app-form [(user)]="user" (save)="submit($event)"></app-form>
+    </div>
+    <div class="col-9">
+      <h2>Listagem</h2>
+      <app-list [users]="users" (update)="update($event)" (remove)="remove($event)"></app-list>
+    </div>
+  </div>
 </div>
-<h2 *ngIf="alert">{{alert.message}}</h2>
-<form novalidate [formGroup]="user" (ngSubmit)="submit()">
-  <label for="">
-    Nome
-    <input type="text" formControlName="nome" name="nome">
-  </label>
-  <button type="reset" [disabled]="!nome.value">Limpar</button>
-  <button [disabled]="!enableToSave">Salvar</button>
-</form>
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Nome</th>
-      <th>Editar</th>
-      <th>Remover</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users | async">
-      <td>{{user._id}}</td>
-      <td>{{user.nome}}</td>
-      <td>
-        <button type="button" (click)="update(user)">Editar</button>
-      </td>
-      <td>
-        <button type="button" (click)="remove(user)">Remover</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-

@@ -1,35 +1,29 @@
 import { Component } from '@angular/core';
 import { UsersService } from './user.service';
-import { FormGroup, FormControl } from '@angular/forms';
+interface Alert {
+  type?: string;
+  message?: string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public enableToSave: boolean = false;
   users;
-  alert: any = {};
+  alert: Alert;
   id: string;
-  user = new FormGroup({
-    nome: new FormControl(''),
-  });
-  constructor(private usersService: UsersService) {
-
-  }
+  user;
+  constructor(private usersService: UsersService) { }
   ngOnInit() {
     this.getUsers();
-    this.user.valueChanges.subscribe(() => {
-      this.enableToSave = this.user.valid;
-    });
   }
-  get nome(): any { return this.user.get('nome'); }
   getUsers() {
     this.users = this.usersService.list();
   }
   update(user) {
     this.id = user._id;
-    this.user.patchValue(user);
+    this.user = user;
   }
   remove(user) {
     if (confirm('Remover ' + user.nome + '?')) {
@@ -39,20 +33,20 @@ export class AppComponent {
       })
     }
   }
-  submit() {
-    console.log(this.user.value);
+  submit(user) {
     if (this.id) {
-      this.usersService.update(this.id, this.user.value).subscribe(res => {
+      this.usersService.update(this.id, user).subscribe(res => {
         this.alert = res;
+        this.alert.type = 'success';
         this.getUsers();
       });  
     } else {
-      this.usersService.save(this.user.value).subscribe(res => {
+      this.usersService.save(user).subscribe(res => {
         this.alert = res;
+        this.alert.type = 'success';
         this.getUsers();
-      });  
+      })
     }
     this.id = null;
-    this.user.reset();
   }
 }

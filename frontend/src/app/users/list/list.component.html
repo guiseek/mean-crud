@@ -1,0 +1,27 @@
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Criado</th>
+      <th>Alterado</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | async" [ngClass]="{'table-warning': !user.ativo}">
+      <td>{{user.nome}}</td>
+      <td>{{user.idade}}</td>
+      <td>{{user.criado_em | date:"dd/MM/yyyy 'às' hh:mm:ss"}}</td>
+      <td>{{user.alterado_em | date:"dd/MM/yyyy 'às' hh:mm:ss"}}</td>
+      <td class="text-right">
+        <button type="button" class="btn btn-warning btn-sm" (click)="edit(user)">
+          Editar
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="delete(user)">
+          Remover
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
