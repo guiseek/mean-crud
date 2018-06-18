@@ -1,0 +1,6 @@
+<div class="row navbar">
+  <h2>Lista de usuários</h2>
+  <app-search (search)="search($event)" (clear)="getUsers()"></app-search>
+</div>
+
+<app-list [users]="users" (update)="update($event)" (remove)="remove($event)"></app-list>

@@ -17,4 +17,10 @@ export class UsersService {
   remove(id) {
     return this.http.delete('http://localhost:3000/users/' + id);
   }
+  get(id) {
+    return this.http.get('http://localhost:3000/users/' + id);
+  }
+  search(term) {
+    return this.http.post('http://localhost:3000/users/search', term);
+  }
 }

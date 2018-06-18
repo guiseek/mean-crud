@@ -1,20 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">MEAN</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav my-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/users-list">Listar usuários</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user-create">Cadastrar novo usuário</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>
-        Usuários
-      </h1>
-      <h2 class="alert alert-info" *ngIf="alert">{{alert.message}}</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <h2>Formulário</h2>
-      <app-form [(user)]="user" (save)="submit($event)"></app-form>
-    </div>
-    <div class="col-9">
-      <h2>Listagem</h2>
-      <app-list [users]="users" (update)="update($event)" (remove)="remove($event)"></app-list>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>

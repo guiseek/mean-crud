@@ -1,3 +1,4 @@
+import { PagesModule } from './pages/pages.module';
 import { UsersService } from './user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -5,24 +6,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ListComponent } from './users/list/list.component';
-import { UsersModule } from './users/users.module';
-import { FormComponent } from './users/form/form.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    UsersModule,
-  ],
-  entryComponents: [
-    ListComponent,
-    FormComponent
+    RouterModule.forRoot([]),
+    PagesModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]

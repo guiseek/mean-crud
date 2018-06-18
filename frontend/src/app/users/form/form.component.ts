@@ -20,9 +20,7 @@ export class FormComponent implements OnChanges {
   get idade(): any { return this.data.get('idade'); }
   get ativo(): any { return this.data.get('ativo'); }
   ngOnChanges(changes) {
-    if (changes.user.currentValue) {
-      this.data.patchValue(changes.user.currentValue);
-    }
+    if (changes.user.currentValue) this.data.patchValue(changes.user.currentValue);
   }
   ngOnInit() {
     this.data.valueChanges.subscribe(() => {

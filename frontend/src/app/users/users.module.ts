@@ -3,17 +3,21 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
+// import { UsersComponent } from './users.component';
 
 @NgModule({
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    // UsersRoutingModule
   ],
-  declarations: [ListComponent, FormComponent],
+  declarations: [ListComponent, FormComponent, SearchComponent],
   exports: [
     ListComponent,
-    FormComponent
+    FormComponent,
+    SearchComponent
   ]
 })
 export class UsersModule { }

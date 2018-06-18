@@ -3,7 +3,7 @@
     <label for="nome">
       Nome
     </label>
-    <input type="text" id="nome" class="form-control" formControlName="nome" required>
+    <input type="text" id="nome" class="form-control" formControlName="nome">
   </div>
   <div class="form-group">
     <label for="idade">
@@ -15,6 +15,6 @@
     <input type="checkbox" class="form-check-input" id="ativo" formControlName="ativo">
     <label class="form-check-label" for="ativo">Ativo</label>
   </div>
-  <button class="btn btn-success" [disabled]="!enableToSave">Salvar</button>
+  <button class="btn btn-success">Salvar</button>
   <button type="reset" class="btn btn-primary" [disabled]="!nome.value">Limpar</button>
 </form>

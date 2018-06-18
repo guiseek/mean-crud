@@ -14,11 +14,9 @@ export class ListComponent implements OnInit {
   ngOnInit() {
   }
   edit(user) {
-    console.log("user: ", user);
     this.update.emit(user);
   }
   delete(user) {
-    console.log("user: ", user);
     this.remove.emit({...user});
   }
 }
