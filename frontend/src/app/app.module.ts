@@ -1,3 +1,6 @@
+import { AuthModule } from './auth/auth.module';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
 import { PagesModule } from './pages/pages.module';
 import { UsersService } from './user.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,9 +21,10 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([]),
-    PagesModule
+    AuthModule,
+    PagesModule,
   ],
-  providers: [UsersService],
+  providers: [AuthService, AuthGuardService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
